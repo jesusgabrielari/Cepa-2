@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  oenologist: one
+  magazine: one
+  writer: false
+  editor: false
+  reviewer: false
+
+two:
+  oenologist: two
+  magazine: two
+  writer: false
+  editor: false
+  reviewer: false

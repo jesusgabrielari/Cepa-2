@@ -1,0 +1,33 @@
+<%= form_with(model: wine, local: true) do |form| %>
+  <% if wine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(wine.errors.count, "error") %> prohibited this wine from being saved:</h2>
+
+      <ul>
+      <% wine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <!-- Formulario anidado -->
+  <div class="container">
+    <%= form.fields_for :blends do |ff| %>
+      <%= render 'blend_fields', f: ff  %>
+    <% end %>
+  </div>
+  <!-- Ocupando Cocoon -->
+  <div class="links pb-3">
+    <%= link_to_add_association 'Add Strain', form, :blends, class: 'btn btn-primary' %>
+  </div>
+ 
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

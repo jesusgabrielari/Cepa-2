@@ -1,0 +1,21 @@
+<div class="form-group">
+    <%= f.label :magazine_id %>
+    <!-- Con esto el edit mantiene los valores originales -->
+    <!-- Seteo la variable de instancia @magazines la cual se declara en el controlador oenologist -->
+    <%= f.collection_select :magazine_id, @magazines, :id, :name %>
+</div>
+
+<div class="form-group">
+    <%= f.label :editor %>
+    <%= f.check_box :editor %>
+</div>
+
+<div class="form-group">
+    <%= f.label :reviewer %>
+    <%= f.check_box :reviewer %>
+</div>
+
+<div class="form-group">
+    <%= f.label :writer %>
+    <%= f.check_box :writer %>
+</div>

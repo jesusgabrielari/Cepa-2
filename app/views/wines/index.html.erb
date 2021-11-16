@@ -1,0 +1,47 @@
+<!-- <p id="notice"><%= notice %></p> -->
+
+<h1>Wines</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Strains</th>
+      <th>Grades and Oenologist</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wines.each do |wine| %>
+      <tr>
+        <td><%= wine.name %></td>
+        <td>
+        <ul>
+          <% wine.blends.each do |blend| %>
+            <!-- Esta info se trae por medio del modelo -->
+            <li> <%= blend.strain.name %> (<%= blend.percentage %>%)</li>
+          <% end %>
+        </ul>
+        </td>
+        <td>
+            <ul>
+            <% wine.grades.each do |grade| %>
+              <li><%= grade.oenologist.name %> Calificó con un <%= grade.score %></li>
+            <% end %>
+            </ul>
+        </td>
+        <% if current_user.admin %>
+          <td><%= link_to 'Show', wine %></td>
+          <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
+          <td><%= link_to 'Destroy', wine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wine', new_wine_path, class: 'btn btn-success' %>
